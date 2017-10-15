@@ -1,0 +1,4 @@
+-) Add python script, strip out my user,pass,api info
+1) Get authentication working https://www.last.fm/api/desktopauth
+2) Integrate this into existing python script
+
