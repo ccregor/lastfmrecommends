@@ -4,13 +4,28 @@ import os
 import datetime
 import time
 import random
+import sys
 # -*- coding: utf-8 -*-
 
-API_KEY = "APIKEY"
-API_SECRET = "APISECRET"
+#Get necessary variables
+print("Usage: 'python3 recommends.py USERNAME PASSWORD APIKEY APISECRET'")
+if len(sys.argv) >= 2:
+	username = str(sys.argv[1]).replace(" ","")
+else:
+	username = str(input("Last.FM username: "))
+if len(sys.argv) >= 3:
+	password_hash = pylast.md5(str(sys.argv[2]))
+else:
+	password_hash = pylast.md5(input("Last.FM password: "))
+if len(sys.argv) >= 4:
+	API_KEY = str(sys.argv[3])
+else:
+	API_KEY = str(input("Last.FM API Key: "))
+if len(sys.argv) >= 5:
+	API_SECRET = str(sys.argv[4])
+else:
+	API_SECRET = str(input("Last.FM API Secret: "))
 
-username = "USER"
-password_hash = pylast.md5("PASS")
 network = pylast.LastFMNetwork(api_key=API_KEY, api_secret=API_SECRET, username=username, password_hash=password_hash)
 authuser = network.get_authenticated_user()
 seed = int()
