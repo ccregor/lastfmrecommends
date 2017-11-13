@@ -1,3 +1,20 @@
+#Last FM Playlist Generator
+#
+#Ask about
+#0 - need to auth, ask for last.fm user and pass
+#1 - How many top tracks, artists, and tags to choose from
+#2 - Choose from overall, this month, and random historical month
+#3 - Go grab em!
+#    a - Sort and deduplicate artist - tracks
+#    b - Sort and deduplicate artist
+#    c - Sort and deduplicate tags
+#
+#4 - Later, create a player that hooks up with spotify, tidal, grooveshark, etc...
+#    a - create a player function for these guys
+#    b - in the playlist acquisition, be picky if the artist - title is not an EXACT match, try another service
+#    c - anyway we can get this on sonos? shouldn't be too hard, sonos is kinda already set up for this
+#
+
 #Better last.fm recommends
 import pylast
 import os
@@ -5,6 +22,7 @@ import datetime
 import time
 import random
 import sys
+import webbrowser
 # -*- coding: utf-8 -*-
 
 #Get necessary variables
@@ -26,7 +44,11 @@ if len(sys.argv) >= 5:
 else:
 	API_SECRET = str(input("Last.FM API Secret: "))
 
+#webbrowser.open("http://www.last.fm/api/auth/?api_key="+API_KEY+"&token=, new=0, autoraise=True)
+
 network = pylast.LastFMNetwork(api_key=API_KEY, api_secret=API_SECRET, username=username, password_hash=password_hash)
+print(network.session_key)
+exit()
 authuser = network.get_authenticated_user()
 seed = int()
 num = int()
@@ -91,7 +113,7 @@ def gettagsfromsong(song, num):
         if tag not in tags:
             tags.append(tag)
     return(tags)
-    
+
 
 def getartist(song):
     artist = str(song).split(" - ")[0]
@@ -172,7 +194,7 @@ def getalltracks(song, num):
             for h in tags:
                 for i in gettagtracks(h, num):
                     addtoplaylist(i)
-        
+
 def makeplaylist():
     all0 = []
     all1 = []

@@ -2,3 +2,19 @@
 1) Get authentication working https://www.last.fm/api/desktopauth
 2) Integrate this into existing python script
 
+#Last FM Playlist Generator
+#
+#Ask about
+#0 - need to auth, ask for last.fm user and pass
+#1 - How many top tracks, artists, and tags to choose from
+#2 - Choose from overall, this month, and random historical month
+#3 - Go grab em!
+#    a - Sort and deduplicate artist - tracks
+#    b - Sort and deduplicate artist
+#    c - Sort and deduplicate tags
+#
+#4 - Later, create a player that hooks up with spotify, tidal, grooveshark, etc...
+#    a - create a player function for these guys
+#    b - in the playlist acquisition, be picky if the artist - title is not an EXACT match, try another service
+#    c - anyway we can get this on sonos? shouldn't be too hard, sonos is kinda already set up for this
+#
